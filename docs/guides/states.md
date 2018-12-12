@@ -30,6 +30,7 @@ console.log(lightMachine.transition('yellow', 'TIMER'));
 //   // ...
 // }
 ```
+`State` instances can also be accessed via an [interpretation](./interpretation.md) service.
 
 ## State Definition
 
@@ -165,6 +166,6 @@ This will also maintain and restore previous [history states](./history.md).
 
 ## Notes
 
-- You should seldom (never) have to create a `State` instance manually. Treat `State` as a read-only object that comes from `machine.transition(...)` or `service.onTransition(...)` _only_.
+- You should seldom (never) have to create a `State` instance manually. Treat `State` as a read-only object that comes from `machine.transition(...)` or [`service.onTransition(...)`](./interpretation.md#the-xstate-interpreter) _only_.
 - To prevent memory leaks, `state.history` will not retain its history; that is, `state.history.history === undefined`. Otherwise, we're creating a huge linked list and reinventing blockchain, which I really don't care to do.
   - This behavior may be configurable in future versions.
